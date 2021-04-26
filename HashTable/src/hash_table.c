@@ -14,7 +14,7 @@
 
 int main(void)
 {
-    int testing = ht_hash_func("cat", 151, 53);
+    int testing = check_prime(7);
     printf("%d", testing);
     return 0;
 }
@@ -80,6 +80,7 @@ int ht_insert(hash_table *ht, const char *key, const char *value)
     //check if the index belong to a NULL value in the ht->items array
     table_item *cur_item = ht->items[index];
     int i = 1;
+    
     while (cur_item != NULL)
     {
         if (cur_item != &DELETED_ITEM)
@@ -182,4 +183,27 @@ static int ht_double_hashing(const char *s, const int bucket, const int attempt)
     const int first_hash = ht_hash_func(s, HASH_PRIME_1, bucket);
     const int second_hash = ht_hash_func(s, HASH_PRIME_2, bucket);
     return (first_hash + (attempt * (second_hash + 1))) % bucket;
+}
+
+//////////////////////////
+//calculate prime
+//////////////////////////
+
+int check_prime(const int number){
+    //base case since 1 and 2 are prime
+    if(number <= 2) return 1;
+    //check from 3 to number - 1
+    for(int i = 3; i < number; i++){
+        if(number % i == 0) return 0;
+    }
+    //the number is a prime if it passes the for loop check
+    return 1;
+}
+
+//get the prime number next to the number in the parameter
+int get_next_prime(int number){
+    while(check_prime(number) != 1){
+        number++;
+    }
+    return number;
 }
