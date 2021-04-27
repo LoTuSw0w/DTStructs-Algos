@@ -9,6 +9,7 @@ typedef struct
 {
     int size;
     int count;
+    int base_size;
     table_item **items;
 } hash_table;
 
@@ -29,3 +30,8 @@ static int ht_hash_func(const char* s, const int a, const int modNumber);
 static int ht_double_hashing(const char* s, const int bucket, const int attempt);
 
 //CRUD operations 
+
+
+//prime number functions
+int check_prime(const int number);
+int get_next_prime(int number);
