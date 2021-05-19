@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "nodestruct.h": "c",
+        "functions-header.h": "c"
+    }
+}
