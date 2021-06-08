@@ -1,15 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "struct_and_prototypes.h"
+
 #define TRUE 1
 #define FALSE 0
-
-typedef struct
-{
-    int y_coordinate;
-    int x_coordinate;
-    int completed;
-} Coordinate;
 
 int board[9][9] =
     {{7, 8, 0, 4, 0, 0, 1, 2, 0},
@@ -53,6 +48,24 @@ int board4[9][9] =
      {0, 0, 0, 0, 8, 0, 0, 7, 0},
      {0, 1, 7, 0, 0, 0, 0, 0, 0},
      {0, 0, 0, 0, 3, 6, 0, 4, 0}};
+
+
+//////////////////////
+//main function
+//////////////////////
+
+int main()
+{
+    // Print_board(board3, 9);
+    puts("-----------------------------");
+    Solve(board3, 9);
+    Print_board(board3, 9);
+    return 0;
+}
+
+//////////////////////
+//functions for solving sudoku
+//////////////////////
 
 void Print_board(int (*board)[9], int array_length)
 {
@@ -161,9 +174,4 @@ int Solve(int (*board)[9], int array_length)
     }
 }
 
-int main()
-{
-    Solve(board4, 9);
-    Print_board(board4, 9);
-    return 0;
-}
+
