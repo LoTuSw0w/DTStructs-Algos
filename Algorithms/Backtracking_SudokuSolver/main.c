@@ -49,6 +49,53 @@ int board4[9][9] =
      {0, 1, 7, 0, 0, 0, 0, 0, 0},
      {0, 0, 0, 0, 3, 6, 0, 4, 0}};
 
+int board_zero[9][9] =
+    {{0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0},
+     {0, 0, 0, 0, 0, 0, 0, 0, 0}};
+
+//generate a random number between 1 and 9
+int randomNumberGenerator()
+{
+    srand(time(NULL));
+    return rand() % 9 + 1;
+}
+
+// int (*Create_sudoku_pattern())[9]
+// {
+//     int(*sudoku_board)[9] = malloc(sizeof(int) * 81);
+//     for (int i = 0; i < 9; i++)
+//     {
+//         for (int j = 0; j < 9; j++)
+//         {
+//             int value = randomNumberGenerator();
+//             sudoku_board[i][j] = value;
+//         }
+//     }
+
+//     return sudoku_board;
+// }
+
+int Create_sudoku_pattern(int (*sudoku_board)[9])
+{
+    int value;
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            value = randomNumberGenerator();
+            sudoku_board[i][j] = value;
+        }
+    }
+
+    return 1;
+}
 
 //////////////////////
 //main function
@@ -56,11 +103,16 @@ int board4[9][9] =
 
 int main()
 {
+    // // Print_board(board3, 9);
+    // puts("-----------------------------");
+    // Solve(board3, 9);
     // Print_board(board3, 9);
-    puts("-----------------------------");
-    Solve(board3, 9);
-    Print_board(board3, 9);
-    return 0;
+    // return 0;
+    Create_sudoku_pattern(board_zero);
+    Print_board(board_zero, 9);
+
+   system("PAUSE");
+   return 0;
 }
 
 //////////////////////
@@ -173,5 +225,3 @@ int Solve(int (*board)[9], int array_length)
         return FALSE;
     }
 }
-
-
